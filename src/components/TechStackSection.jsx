@@ -48,16 +48,16 @@ export function TechStackSection() {
         key={skill.name}
         className="group relative flex flex-col items-center justify-between rounded-xl border border-surface-border bg-surface-item p-3 text-center transition-all duration-300 hover:border-surface-border-hover hover:bg-surface-item-hover hover:shadow-lg hover:shadow-brand-primary/10 hover:-translate-y-0.5"
       >
-        <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-slate-900/80 p-2 border border-surface-border transition-transform group-hover:scale-110">
+        <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-900/80 p-2 border border-slate-300 dark:border-slate-800 transition-transform group-hover:scale-110">
           <Icon className="h-6 w-6" />
         </div>
-        <span className="mt-2 text-xs font-semibold text-slate-200 group-hover:text-white line-clamp-1">
+        <span className="mt-2 text-xs font-semibold text-slate-800 dark:text-slate-200 group-hover:text-brand-primary line-clamp-1">
           {skill.name}
         </span>
         {/* Barra de progresso com gradiente e brilho */}
-        <div className="mt-2.5 h-1.5 w-full overflow-hidden rounded-full bg-slate-800/80">
+        <div className="mt-2.5 h-1.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800/80">
           <div
-            className={`h-full rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 group-hover:opacity-100 opacity-80`}
+            className={`h-full rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 group-hover:opacity-100 opacity-90`}
             style={{ width: `${skill.level}%` }}
           />
         </div>
@@ -69,18 +69,18 @@ export function TechStackSection() {
     <section className="space-y-6 rounded-2xl border border-surface-border bg-gradient-to-b from-surface-card-from via-surface-card-via to-surface-card-to p-6 lg:p-8 shadow-2xl">
       {/* Cabeçalho da Seção */}
       <div className="text-center space-y-1">
-        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
+        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
           Habilidades &amp; Tech Stack
         </h2>
-        <p className="text-xs sm:text-sm font-medium text-teal-400 uppercase tracking-wider">
+        <p className="text-xs sm:text-sm font-semibold text-brand-primary uppercase tracking-wider">
           Minha Tech Stack
         </p>
       </div>
 
       {/* Categoria 1: Backend */}
       <div className="space-y-2.5">
-        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+        <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-400 uppercase tracking-wider flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
           Backend
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
@@ -90,8 +90,8 @@ export function TechStackSection() {
 
       {/* Categoria 2: Frontend */}
       <div className="space-y-2.5">
-        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+        <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-400 uppercase tracking-wider flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
           Frontend
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
@@ -101,8 +101,8 @@ export function TechStackSection() {
 
       {/* Categoria 3: Banco de Dados e DevOps */}
       <div className="space-y-2.5">
-        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-teal-400" />
+        <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-400 uppercase tracking-wider flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-teal-500" />
           Banco de Dados e DevOps
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">

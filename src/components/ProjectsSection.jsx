@@ -67,11 +67,11 @@ export function ProjectsSection() {
       {/* Cabeçalho */}
       <div className="flex items-center justify-between border-b border-surface-border pb-4">
         <div>
-          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2.5">
             <GithubIcon className="h-6 w-6 text-brand-primary" />
             Repositórios e Projetos GitHub
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
             Projetos reais com código limpo, arquitetura em microsserviços e full-stack
           </p>
         </div>
@@ -88,13 +88,13 @@ export function ProjectsSection() {
               {/* Informações do Projeto à esquerda */}
               <div className="flex-1 space-y-3">
                 <div className="flex items-center gap-2.5">
-                  <GithubIcon className="h-5 w-5 text-teal-400 shrink-0" />
-                  <h3 className="text-base font-bold text-white group-hover:text-teal-300 transition-colors">
+                  <GithubIcon className="h-5 w-5 text-brand-primary shrink-0" />
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-brand-primary transition-colors">
                     {proj.title}
                   </h3>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl">
+                <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed max-w-2xl">
                   {proj.description}
                 </p>
 
@@ -108,12 +108,12 @@ export function ProjectsSection() {
                 </div>
 
                 {/* Links e Estatísticas do GitHub */}
-                <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-slate-300">
+                <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-slate-700 dark:text-slate-300">
                   <a
                     href={proj.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-slate-300 hover:text-teal-400 transition-colors font-medium"
+                    className="inline-flex items-center gap-1.5 text-slate-700 dark:text-slate-300 hover:text-brand-primary transition-colors font-medium"
                   >
                     <GithubIcon className="h-3.5 w-3.5" />
                     <span>Repositório GitHub</span>
@@ -123,24 +123,24 @@ export function ProjectsSection() {
                     href={proj.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-teal-400 hover:text-teal-300 transition-colors font-medium"
+                    className="inline-flex items-center gap-1.5 text-brand-primary hover:text-brand-primary-hover transition-colors font-semibold"
                   >
                     <ExternalLink className="h-3.5 w-3.5" />
                     <span>Live Demo</span>
                   </a>
 
                   {/* Badges de métricas: stars, forks, watchers */}
-                  <div className="flex items-center gap-3 pl-2 border-l border-slate-800 text-slate-400 text-[11px]">
-                    <span className="flex items-center gap-1 hover:text-amber-300 transition-colors">
-                      <Star className="h-3.5 w-3.5 text-amber-400" />
+                  <div className="flex items-center gap-3 pl-2 border-l border-slate-300 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-[11px]">
+                    <span className="flex items-center gap-1 hover:text-amber-500 dark:hover:text-amber-300 transition-colors font-medium">
+                      <Star className="h-3.5 w-3.5 text-amber-500 dark:text-amber-400" />
                       {proj.stats.stars}
                     </span>
-                    <span className="flex items-center gap-1 hover:text-sky-300 transition-colors">
-                      <GitFork className="h-3.5 w-3.5 text-sky-400" />
+                    <span className="flex items-center gap-1 hover:text-sky-600 dark:hover:text-sky-300 transition-colors font-medium">
+                      <GitFork className="h-3.5 w-3.5 text-sky-500 dark:text-sky-400" />
                       {proj.stats.forks}
                     </span>
-                    <span className="flex items-center gap-1 hover:text-teal-300 transition-colors">
-                      <Eye className="h-3.5 w-3.5 text-teal-400" />
+                    <span className="flex items-center gap-1 hover:text-brand-primary transition-colors font-medium">
+                      <Eye className="h-3.5 w-3.5 text-brand-primary" />
                       {proj.stats.watchers}
                     </span>
                   </div>
@@ -148,8 +148,8 @@ export function ProjectsSection() {
               </div>
 
               {/* Lado direito: Linguagens Usadas com gráfico Donut */}
-              <div className="shrink-0 border-t lg:border-t-0 lg:border-l border-slate-800/80 pt-4 lg:pt-0 lg:pl-6 flex flex-col justify-center">
-                <span className="text-[11px] font-semibold tracking-wider text-slate-400 uppercase mb-2">
+              <div className="shrink-0 border-t lg:border-t-0 lg:border-l border-surface-border pt-4 lg:pt-0 lg:pl-6 flex flex-col justify-center">
+                <span className="text-[11px] font-semibold tracking-wider text-slate-600 dark:text-slate-400 uppercase mb-2">
                   Linguagens Usadas
                 </span>
                 <LanguageDonutChart data={proj.languages} size={64} strokeWidth={8} />

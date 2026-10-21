@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
 import { TechStackSection } from "@/components/TechStackSection";
@@ -9,43 +9,82 @@ import { LayoutGrid, Rows } from "lucide-react";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("home");
-  // Modo de exibição: 'showcase' (3 colunas como na imagem de referência) ou 'linear' (página corrida)
+  // Modo de exibição: 'showcase' (3 colunas) ou 'linear' (página corrida)
   const [viewMode, setViewMode] = useState("showcase");
 
+  // Estado do tema com inicialização a partir do localStorage ou preferência do sistema
+  // Temas disponíveis: 'dark' | 'light' | 'modern' | 'modern-dark'
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme && ["dark", "light", "modern", "modern-dark"].includes(savedTheme)) {
+      return savedTheme;
+    }
+    return document.documentElement.classList.contains("dark") ? "dark" : "light";
+  });
+
+  // Sincroniza as classes correspondentes no elemento raiz html e persiste no localStorage
+  useEffect(() => {
+    const root = document.documentElement;
+    // Remove todas as classes de temas anteriores
+    root.classList.remove("dark", "modern", "modern-dark");
+
+    if (theme === "dark") {
+      root.classList.add("dark");
+    } else if (theme === "modern") {
+      root.classList.add("modern");
+    } else if (theme === "modern-dark") {
+      root.classList.add("dark", "modern-dark");
+    }
+    // No caso de 'light', nenhuma classe adicional é necessária pois os tokens padrão residem em :root
+
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const changeTheme = (newTheme) => {
+    setTheme(newTheme);
+  };
+
+  const toggleTheme = () => {
+    const themeCycle = ["dark", "light", "modern", "modern-dark"];
+    const currentIndex = themeCycle.indexOf(theme);
+    const nextIndex = (currentIndex + 1) % themeCycle.length;
+    setTheme(themeCycle[nextIndex]);
+  };
+
   return (
-    <div className="min-h-screen bg-page-bg text-slate-100 flex flex-col font-sans selection:bg-brand-primary/30 selection:text-brand-primary-hover">
+    <div className="min-h-screen bg-page-bg text-foreground flex flex-col font-sans selection:bg-brand-primary/30 selection:text-brand-primary-hover">
       {/* Barra de Título Superior (Banner do Portfólio) */}
       <div className="w-full bg-page-header border-b border-surface-border py-4 px-4 sm:px-8 text-center sticky top-0 z-50 backdrop-blur-md bg-opacity-90">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-white flex items-center gap-3">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-3">
               <span>PORTFOLIO</span>
               <span className="h-2.5 w-2.5 rounded-full bg-brand-primary shadow-[0_0_12px_var(--color-brand-glow)] inline-block animate-pulse" />
-              <span className="bg-gradient-to-r from-teal-300 via-cyan-300 to-emerald-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-teal-500 via-cyan-600 to-emerald-600 dark:from-teal-300 dark:via-cyan-300 dark:to-emerald-400 bg-clip-text text-transparent">
                 FULL STACK DEVELOPER
               </span>
             </h1>
           </div>
 
           {/* Seletor de Modo de Visualização */}
-          <div className="flex items-center gap-2 bg-slate-900/90 border border-surface-border rounded-full p-1 text-xs">
+          <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-900/90 border border-surface-border rounded-full p-1 text-xs">
             <button
               onClick={() => setViewMode("showcase")}
               className={`flex items-center gap-1.5 px-3 py-1 rounded-full transition-all cursor-pointer font-medium ${
                 viewMode === "showcase"
-                  ? "bg-brand-primary text-slate-950 font-semibold shadow-sm"
-                  : "text-slate-400 hover:text-white"
+                  ? "bg-brand-primary text-white dark:text-slate-950 font-semibold shadow-sm"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
               <LayoutGrid className="h-3.5 w-3.5" />
-              <span>Painel Showcase (3 Colunas)</span>
+              <span>Painel Showcase</span>
             </button>
             <button
               onClick={() => setViewMode("linear")}
               className={`flex items-center gap-1.5 px-3 py-1 rounded-full transition-all cursor-pointer font-medium ${
                 viewMode === "linear"
-                  ? "bg-brand-primary text-slate-950 font-semibold shadow-sm"
-                  : "text-slate-400 hover:text-white"
+                  ? "bg-brand-primary text-white dark:text-slate-950 font-semibold shadow-sm"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
               <Rows className="h-3.5 w-3.5" />
@@ -59,6 +98,9 @@ export default function App() {
       <Navbar
         onNavigate={setActiveSection}
         activeSection={activeSection}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+        onSelectTheme={changeTheme}
       />
 
       {/* Conteúdo Principal */}
@@ -102,13 +144,13 @@ export default function App() {
       </main>
 
       {/* Rodapé Moderno */}
-      <footer className="w-full border-t border-surface-border bg-page-footer py-6 px-4 text-center text-xs text-slate-500">
+      <footer className="w-full border-t border-surface-border bg-page-footer py-6 px-4 text-center text-xs text-slate-600 dark:text-slate-400">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>© {new Date().getFullYear()} Rodrigo Copetti • Desenvolvedor Full-Stack</p>
-          <p className="flex items-center gap-1.5 text-slate-400">
-            Desenvolvido com <span className="text-brand-primary font-medium">React</span>,{" "}
-            <span className="text-brand-secondary font-medium">Tailwind CSS</span> e{" "}
-            <span className="text-slate-200 font-medium">shadcn/ui</span>
+          <p className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
+            Desenvolvido com <span className="text-brand-primary font-semibold">React</span>,{" "}
+            <span className="text-brand-secondary font-semibold">Tailwind CSS</span> e{" "}
+            <span className="text-slate-800 dark:text-slate-200 font-semibold">shadcn/ui</span>
           </p>
         </div>
       </footer>

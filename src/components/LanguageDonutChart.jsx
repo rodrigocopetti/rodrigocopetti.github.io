@@ -59,15 +59,15 @@ export function LanguageDonutChart({ data, size = 68, strokeWidth = 9 }) {
       </div>
 
       {/* Legenda com as linguagens e porcentagens */}
-      <div className="flex flex-col gap-1 text-[11px] text-slate-300">
+      <div className="flex flex-col gap-1 text-[11px] text-slate-700 dark:text-slate-300">
         {data.map((item, idx) => (
           <div key={idx} className="flex items-center gap-1.5 leading-tight">
             <span
-              className="inline-block h-2 w-2 rounded-full shrink-0"
+              className="inline-block h-2 w-2 rounded-full shrink-0 shadow-xs"
               style={{ backgroundColor: item.color }}
             />
-            <span className="font-normal text-slate-300">{item.name}</span>
-            <span className="text-slate-400 font-medium ml-auto pl-1">
+            <span className="font-medium text-slate-800 dark:text-slate-300">{item.name}</span>
+            <span className="text-slate-500 dark:text-slate-400 font-semibold ml-auto pl-1">
               {item.percent}%
             </span>
           </div>
