@@ -128,7 +128,7 @@ export default function App() {
             {/* Coluna 3: Repositórios GitHub e Seção de Contato */}
             <div className="space-y-6 lg:col-span-2 2xl:col-span-1">
               <ProjectsSection />
-              <ContactSection />
+              <ContactSection layoutMode="showcase-column" />
             </div>
           </div>
         ) : (
