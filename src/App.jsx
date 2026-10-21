@@ -10,7 +10,7 @@ import { LayoutGrid, Rows } from "lucide-react";
 export default function App() {
   const [activeSection, setActiveSection] = useState("home");
   // Modo de exibição: 'showcase' (3 colunas) ou 'linear' (página corrida)
-  const [viewMode, setViewMode] = useState("showcase");
+  const [viewMode, setViewMode] = useState("linear");
 
   // Estado do tema com inicialização a partir do localStorage ou preferência do sistema
   // Temas disponíveis: 'dark' | 'light' | 'modern' | 'modern-dark'
@@ -77,7 +77,7 @@ export default function App() {
               }`}
             >
               <LayoutGrid className="h-3.5 w-3.5" />
-              <span>Painel Showcase</span>
+              {/* <span>Painel Showcase</span> */}
             </button>
             <button
               onClick={() => setViewMode("linear")}
@@ -88,7 +88,7 @@ export default function App() {
               }`}
             >
               <Rows className="h-3.5 w-3.5" />
-              <span>Fluxo Contínuo</span>
+              {/* <span>Fluxo Contínuo</span> */}
             </button>
           </div>
         </div>

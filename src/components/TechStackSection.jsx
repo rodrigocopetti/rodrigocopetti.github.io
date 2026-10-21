@@ -7,14 +7,15 @@ import {
   ReactIcon,
   TypeScriptIcon,
   TailwindIcon,
-  ReduxIcon,
   NextjsIcon,
+  ReduxIcon,
   PostgresIcon,
   MysqlIcon,
   DockerIcon,
-  AwsIcon,
+  VueIcon,
   GithubActionsIcon,
-} from "@/components/TechIcons"
+  // AwsIcon,
+} from "@/components/TechIcons";
 
 export function TechStackSection() {
   const backendSkills = [
@@ -23,26 +24,27 @@ export function TechStackSection() {
     { name: "JPA / Hibernate", icon: JpaHibernateIcon, level: 90, color: "from-teal-500 to-cyan-400" },
     { name: "REST APIs", icon: RestApiIcon, level: 96, color: "from-cyan-500 to-blue-400" },
     { name: "Microservices", icon: MicroservicesIcon, level: 86, color: "from-teal-400 to-emerald-400" },
-  ]
+  ];
 
   const frontendSkills = [
     { name: "React", icon: ReactIcon, level: 94, color: "from-cyan-400 to-sky-500" },
+    { name: "Vue.js", icon: VueIcon, level: 85, color: "from-emerald-400 to-teal-500" },
     { name: "TypeScript", icon: TypeScriptIcon, level: 90, color: "from-blue-500 to-indigo-500" },
     { name: "Tailwind CSS", icon: TailwindIcon, level: 95, color: "from-teal-400 to-cyan-400" },
-    { name: "Redux", icon: ReduxIcon, level: 85, color: "from-purple-500 to-indigo-500" },
     { name: "Next.js", icon: NextjsIcon, level: 88, color: "from-slate-200 to-teal-400" },
-  ]
+    { name: "Redux", icon: ReduxIcon, level: 85, color: "from-purple-500 to-indigo-500" },
+  ];
 
   const devopsSkills = [
     { name: "PostgreSQL", icon: PostgresIcon, level: 92, color: "from-sky-500 to-blue-600" },
     { name: "MySQL", icon: MysqlIcon, level: 88, color: "from-cyan-600 to-teal-500" },
     { name: "Docker", icon: DockerIcon, level: 90, color: "from-blue-400 to-cyan-500" },
-    { name: "AWS", icon: AwsIcon, level: 80, color: "from-amber-500 to-orange-500" },
     { name: "GitHub Actions", icon: GithubActionsIcon, level: 86, color: "from-blue-500 to-teal-400" },
-  ]
+    // { name: "AWS", icon: AwsIcon, level: 80, color: "from-amber-500 to-orange-500" },
+  ];
 
   const renderSkillCard = (skill) => {
-    const Icon = skill.icon
+    const Icon = skill.icon;
     return (
       <div
         key={skill.name}
@@ -62,8 +64,8 @@ export function TechStackSection() {
           />
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <section className="space-y-6 rounded-2xl border border-surface-border bg-gradient-to-b from-surface-card-from via-surface-card-via to-surface-card-to p-6 lg:p-8 shadow-2xl">
@@ -72,9 +74,7 @@ export function TechStackSection() {
         <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
           Habilidades &amp; Tech Stack
         </h2>
-        <p className="text-xs sm:text-sm font-semibold text-brand-primary uppercase tracking-wider">
-          Minha Tech Stack
-        </p>
+        <p className="text-xs sm:text-sm font-semibold text-brand-primary uppercase tracking-wider">Minha Tech Stack</p>
       </div>
 
       {/* Categoria 1: Backend */}
@@ -83,9 +83,7 @@ export function TechStackSection() {
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
           Backend
         </h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-          {backendSkills.map(renderSkillCard)}
-        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">{backendSkills.map(renderSkillCard)}</div>
       </div>
 
       {/* Categoria 2: Frontend */}
@@ -105,10 +103,8 @@ export function TechStackSection() {
           <span className="h-1.5 w-1.5 rounded-full bg-teal-500" />
           Banco de Dados e DevOps
         </h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-          {devopsSkills.map(renderSkillCard)}
-        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">{devopsSkills.map(renderSkillCard)}</div>
       </div>
     </section>
-  )
+  );
 }

@@ -3,36 +3,39 @@
 export function TimelineSection() {
   const experiences = [
     {
-      title: "Desenvolvedor Full-Stack Pleno",
-      period: "2023 - Presente",
+      title: "Desenvolvedor Full-Stack Master",
+      period: "2022 - Presente",
       side: "left",
       items: [
         "Otimização de consultas de banco de dados e queries complexas",
         "Construção de APIs RESTful e microsserviços escaláveis",
-        "Integração de ecossistemas frontend em React com Spring Boot",
+        "Desenvolvimento frontend em vue/quasar com Spring Boot",
       ],
     },
     {
-      title: "Desenvolvedor Backend Spring Boot",
-      period: "2021 - 2023",
+      title: "Arquiteto de Software / Desenvolvedor Full-Stack Sênior",
+      period: "2001 - 2020",
       side: "right",
       items: [
-        "Construção de interfaces SPA responsivas em ecossistemas de microsserviços",
-        "Construção de pipelines de CI/CD e caminhos de banco de dados",
-        "Implementação de segurança e autorização JWT com Spring Security",
+        "Construção de APIs RESTful",
+        "Desenvolvimento frontend em react com Spring Boot",
+        "Implementação de novas funcionalidades em sistemas legados",
+        "Otimização de consultas de banco de dados e queries complexas",
       ],
     },
     {
-      title: "Desenvolvedor Backend Spring",
-      period: "2020 - 2021",
+      title: "Desenvolvedor Sênior",
+      period: "1997 - 2001",
       side: "left",
-      items: [
-        "Desenvolvimento e manutenção de microsserviços em Java",
-        "Testes unitários e de integração contínua automatizados",
-        "Modelagem relacional e persistência com JPA / Hibernate",
-      ],
+      items: ["Desenvolvimento e manutenção de sistemas comerciais utilizando Java e Delphi"],
     },
-  ]
+    {
+      title: "Desenvolvedor Pleno",
+      period: "1996 - 1997",
+      side: "right",
+      items: ["Desenvolvimento e manutenção de sistemas comerciais utilizando Clipper"],
+    },
+  ];
 
   return (
     <section className="space-y-6 rounded-2xl border border-surface-border bg-gradient-to-b from-surface-card-from via-surface-card-via to-surface-card-to p-6 lg:p-8 shadow-2xl">
@@ -53,7 +56,7 @@ export function TimelineSection() {
 
         <div className="space-y-8">
           {experiences.map((exp, index) => {
-            const isLeft = exp.side === "left"
+            const isLeft = exp.side === "left";
             return (
               <div
                 key={index}
@@ -94,10 +97,10 @@ export function TimelineSection() {
                   </div>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
+  );
 }
