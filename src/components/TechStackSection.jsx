@@ -46,9 +46,9 @@ export function TechStackSection() {
     return (
       <div
         key={skill.name}
-        className="group relative flex flex-col items-center justify-between rounded-xl border border-slate-800/80 bg-[#0d1527]/90 p-3 text-center transition-all duration-300 hover:border-teal-500/50 hover:bg-[#111c34] hover:shadow-lg hover:shadow-teal-500/10 hover:-translate-y-0.5"
+        className="group relative flex flex-col items-center justify-between rounded-xl border border-surface-border bg-surface-item p-3 text-center transition-all duration-300 hover:border-surface-border-hover hover:bg-surface-item-hover hover:shadow-lg hover:shadow-brand-primary/10 hover:-translate-y-0.5"
       >
-        <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-slate-900/80 p-2 border border-slate-800 transition-transform group-hover:scale-110">
+        <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-slate-900/80 p-2 border border-surface-border transition-transform group-hover:scale-110">
           <Icon className="h-6 w-6" />
         </div>
         <span className="mt-2 text-xs font-semibold text-slate-200 group-hover:text-white line-clamp-1">
@@ -66,7 +66,7 @@ export function TechStackSection() {
   }
 
   return (
-    <section className="space-y-6 rounded-2xl border border-slate-800/80 bg-gradient-to-b from-[#0f172a]/90 via-[#0b1120] to-[#090d16] p-6 lg:p-8 shadow-2xl">
+    <section className="space-y-6 rounded-2xl border border-surface-border bg-gradient-to-b from-surface-card-from via-surface-card-via to-surface-card-to p-6 lg:p-8 shadow-2xl">
       {/* Cabeçalho da Seção */}
       <div className="text-center space-y-1">
         <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white">

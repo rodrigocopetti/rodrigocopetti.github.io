@@ -35,7 +35,7 @@ export function Navbar({ onNavigate, activeSection }) {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-800/80 bg-[#090d16]/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-surface-border bg-page-header/80 backdrop-blur-md">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6">
         {/* Ícone do GitHub à esquerda */}
         <div className="flex items-center gap-3">
@@ -78,10 +78,10 @@ export function Navbar({ onNavigate, activeSection }) {
                 Log in
               </button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[400px] border-slate-800 bg-[#0f172a] text-slate-100">
+            <DialogContent className="sm:max-w-[400px] border-surface-border bg-surface-card text-slate-100">
               <DialogHeader>
                 <DialogTitle className="text-xl font-bold text-white flex items-center gap-2">
-                  <LogIn className="h-5 w-5 text-teal-400" />
+                  <LogIn className="h-5 w-5 text-brand-primary" />
                   Área do Desenvolvedor
                 </DialogTitle>
                 <DialogDescription className="text-slate-400 text-sm">
@@ -103,7 +103,7 @@ export function Navbar({ onNavigate, activeSection }) {
                     id="email"
                     type="email"
                     placeholder="dev@exemplo.com"
-                    className="border-slate-800 bg-slate-900/60 text-white placeholder:text-slate-500"
+                    className="border-surface-border bg-surface-item text-white placeholder:text-slate-500"
                   />
                 </div>
                 <div className="space-y-2">
@@ -114,12 +114,12 @@ export function Navbar({ onNavigate, activeSection }) {
                     id="password"
                     type="password"
                     placeholder="••••••••"
-                    className="border-slate-800 bg-slate-900/60 text-white placeholder:text-slate-500"
+                    className="border-surface-border bg-surface-item text-white placeholder:text-slate-500"
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-teal-400 font-semibold text-slate-950 hover:bg-teal-300 transition-colors cursor-pointer"
+                  className="w-full bg-brand-primary font-semibold text-slate-950 hover:bg-brand-primary-hover transition-colors cursor-pointer"
                 >
                   Entrar
                 </Button>
@@ -129,7 +129,7 @@ export function Navbar({ onNavigate, activeSection }) {
 
           <Button
             onClick={() => handleScroll("#contato")}
-            className="rounded-full bg-teal-400 px-5 py-1.5 text-xs font-semibold text-slate-950 hover:bg-teal-300 transition-all shadow-md shadow-teal-500/10 cursor-pointer"
+            className="rounded-full bg-brand-primary px-5 py-1.5 text-xs font-semibold text-slate-950 hover:bg-brand-primary-hover transition-all shadow-md shadow-brand-primary/10 cursor-pointer"
           >
             Contato
           </Button>
@@ -151,7 +151,7 @@ export function Navbar({ onNavigate, activeSection }) {
 
       {/* Menu dropdown mobile */}
       {mobileMenuOpen && (
-        <div className="sm:hidden border-b border-slate-800 bg-[#090d16] px-4 py-4 space-y-3">
+        <div className="sm:hidden border-b border-surface-border bg-page-header px-4 py-4 space-y-3">
           {navLinks.map((link) => (
             <button
               key={link.label}

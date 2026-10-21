@@ -18,9 +18,9 @@ export function ProjectsSection() {
       ],
       stats: { stars: 186, forks: 0, watchers: 195 },
       languages: [
-        { name: "Java", percent: 85, color: "#10b981" },
-        { name: "HTML", percent: 5, color: "#f97316" },
-        { name: "Outras", percent: 10, color: "#8b5cf6" },
+        { name: "Java", percent: 85, color: "var(--color-lang-java)" },
+        { name: "HTML", percent: 5, color: "var(--color-lang-html)" },
+        { name: "Outras", percent: 10, color: "var(--color-lang-other)" },
       ],
     },
     {
@@ -37,9 +37,9 @@ export function ProjectsSection() {
       ],
       stats: { stars: 92, forks: 14, watchers: 110 },
       languages: [
-        { name: "TypeScript", percent: 65, color: "#38bdf8" },
-        { name: "CSS", percent: 25, color: "#14b8a6" },
-        { name: "HTML", percent: 10, color: "#fb923c" },
+        { name: "TypeScript", percent: 65, color: "var(--color-lang-ts)" },
+        { name: "CSS", percent: 25, color: "var(--color-lang-css)" },
+        { name: "HTML", percent: 10, color: "var(--color-lang-html)" },
       ],
     },
     {
@@ -55,20 +55,20 @@ export function ProjectsSection() {
       ],
       stats: { stars: 142, forks: 23, watchers: 160 },
       languages: [
-        { name: "Java", percent: 65, color: "#10b981" },
-        { name: "TypeScript", percent: 25, color: "#38bdf8" },
-        { name: "Docker", percent: 10, color: "#6366f1" },
+        { name: "Java", percent: 65, color: "var(--color-lang-java)" },
+        { name: "TypeScript", percent: 25, color: "var(--color-lang-ts)" },
+        { name: "Docker", percent: 10, color: "var(--color-lang-docker)" },
       ],
     },
   ]
 
   return (
-    <section id="projetos" className="space-y-5 rounded-2xl border border-slate-800/80 bg-gradient-to-b from-[#0f172a]/90 via-[#0b1120] to-[#090d16] p-6 lg:p-8 shadow-2xl">
+    <section id="projetos" className="space-y-5 rounded-2xl border border-surface-border bg-gradient-to-b from-surface-card-from via-surface-card-via to-surface-card-to p-6 lg:p-8 shadow-2xl">
       {/* Cabeçalho */}
-      <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
+      <div className="flex items-center justify-between border-b border-surface-border pb-4">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
-            <GithubIcon className="h-6 w-6 text-teal-400" />
+            <GithubIcon className="h-6 w-6 text-brand-primary" />
             Repositórios e Projetos GitHub
           </h2>
           <p className="text-xs text-slate-400 mt-0.5">
@@ -82,7 +82,7 @@ export function ProjectsSection() {
         {projects.map((proj, idx) => (
           <div
             key={idx}
-            className="group relative overflow-hidden rounded-xl border border-slate-800/90 bg-[#0d1527]/90 p-5 transition-all duration-300 hover:border-teal-500/50 hover:bg-[#111c34] hover:shadow-xl hover:shadow-teal-500/10"
+            className="group relative overflow-hidden rounded-xl border border-surface-border bg-surface-item p-5 transition-all duration-300 hover:border-surface-border-hover hover:bg-surface-item-hover hover:shadow-xl hover:shadow-brand-primary/10"
           >
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
               {/* Informações do Projeto à esquerda */}

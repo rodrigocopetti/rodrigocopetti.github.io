@@ -8,6 +8,38 @@
 @theme inline {
     --font-heading: var(--font-sans);
     --font-sans: 'Geist Variable', sans-serif;
+    
+    /* Superfícies e Estrutura */
+    --color-page-bg: var(--page-bg);
+    --color-page-header: var(--page-header);
+    --color-page-footer: var(--page-footer);
+    --color-surface-card: var(--surface-card);
+    --color-surface-card-from: var(--surface-card-from);
+    --color-surface-card-via: var(--surface-card-via);
+    --color-surface-card-to: var(--surface-card-to);
+    --color-surface-item: var(--surface-item);
+    --color-surface-item-hover: var(--surface-item-hover);
+    --color-surface-editor: var(--surface-editor);
+    --color-surface-border: var(--surface-border);
+    --color-surface-border-hover: var(--surface-border-hover);
+
+    /* Cores de Destaque / Identidade */
+    --color-brand-primary: var(--brand-primary);
+    --color-brand-primary-hover: var(--brand-primary-hover);
+    --color-brand-secondary: var(--brand-secondary);
+    --color-brand-accent: var(--brand-accent);
+    --color-brand-glow: var(--brand-glow);
+
+    /* Linguagens e Gráficos */
+    --color-lang-java: var(--lang-java);
+    --color-lang-html: var(--lang-html);
+    --color-lang-ts: var(--lang-ts);
+    --color-lang-css: var(--lang-css);
+    --color-lang-docker: var(--lang-docker);
+    --color-lang-other: var(--lang-other);
+    --color-chart-track: var(--chart-track);
+
+    /* Tokens shadcn / base-ui */
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -49,6 +81,37 @@
 }
 
 :root {
+    /* Superfícies e Estrutura no modo claro */
+    --page-bg: #f8fafc;
+    --page-header: #ffffff;
+    --page-footer: #f1f5f9;
+    --surface-card: #ffffff;
+    --surface-card-from: rgba(255, 255, 255, 0.95);
+    --surface-card-via: #f8fafc;
+    --surface-card-to: #f1f5f9;
+    --surface-item: #f1f5f9;
+    --surface-item-hover: #e2e8f0;
+    --surface-editor: #f8fafc;
+    --surface-border: rgba(203, 213, 225, 0.8);
+    --surface-border-hover: rgba(13, 148, 136, 0.5);
+
+    /* Cores de Destaque */
+    --brand-primary: #0d9488;
+    --brand-primary-hover: #14b8a6;
+    --brand-secondary: #0284c7;
+    --brand-accent: #059669;
+    --brand-glow: #2dd4bf;
+
+    /* Cores de Linguagens e Gráficos */
+    --lang-java: #10b981;
+    --lang-html: #f97316;
+    --lang-ts: #0284c7;
+    --lang-css: #0d9488;
+    --lang-docker: #6366f1;
+    --lang-other: #8b5cf6;
+    --chart-track: #e2e8f0;
+
+    /* Base Tokens */
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
     --card: oklch(1 0 0);
@@ -84,6 +147,37 @@
 }
 
 .dark {
+    /* Superfícies e Estrutura no modo escuro */
+    --page-bg: #070b14;
+    --page-header: #050810;
+    --page-footer: #060912;
+    --surface-card: #0d1527;
+    --surface-card-from: rgba(15, 23, 42, 0.95);
+    --surface-card-via: #0b1120;
+    --surface-card-to: #090d16;
+    --surface-item: rgba(13, 21, 39, 0.9);
+    --surface-item-hover: #111c34;
+    --surface-editor: rgba(8, 13, 25, 0.95);
+    --surface-border: rgba(51, 65, 85, 0.8);
+    --surface-border-hover: rgba(45, 212, 191, 0.5);
+
+    /* Cores de Destaque */
+    --brand-primary: #2dd4bf;       /* teal-400 */
+    --brand-primary-hover: #5eead4; /* teal-300 */
+    --brand-secondary: #38bdf8;     /* cyan/sky */
+    --brand-accent: #34d399;        /* emerald-400 */
+    --brand-glow: #2dd4bf;
+
+    /* Cores de Linguagens e Gráficos */
+    --lang-java: #10b981;
+    --lang-html: #f97316;
+    --lang-ts: #38bdf8;
+    --lang-css: #14b8a6;
+    --lang-docker: #6366f1;
+    --lang-other: #8b5cf6;
+    --chart-track: #1e293b;
+
+    /* Base Tokens */
     --background: oklch(0.145 0 0);
     --foreground: oklch(0.985 0 0);
     --card: oklch(0.205 0 0);

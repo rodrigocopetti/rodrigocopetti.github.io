@@ -35,13 +35,13 @@ export function TimelineSection() {
   ]
 
   return (
-    <section className="space-y-6 rounded-2xl border border-slate-800/80 bg-gradient-to-b from-[#0f172a]/90 via-[#0b1120] to-[#090d16] p-6 lg:p-8 shadow-2xl">
+    <section className="space-y-6 rounded-2xl border border-surface-border bg-gradient-to-b from-surface-card-from via-surface-card-via to-surface-card-to p-6 lg:p-8 shadow-2xl">
       {/* Cabeçalho com Título e Badge Professional */}
       <div className="flex flex-col items-center justify-center space-y-2 text-center">
         <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
           Experiência &amp; Timeline
         </h2>
-        <div className="inline-flex items-center rounded-full border border-teal-500/40 bg-teal-500/10 px-3 py-1 text-xs font-semibold text-teal-300 shadow-sm shadow-teal-500/20">
+        <div className="inline-flex items-center rounded-full border border-brand-primary/40 bg-brand-primary/10 px-3 py-1 text-xs font-semibold text-brand-primary shadow-sm shadow-brand-primary/20">
           Professional
         </div>
       </div>
@@ -60,8 +60,8 @@ export function TimelineSection() {
                 className="relative flex flex-col md:flex-row items-start md:items-center"
               >
                 {/* Ponto / Nó na linha do tempo */}
-                <div className="absolute left-4 md:left-1/2 -translate-x-1/2 flex h-5 w-5 items-center justify-center rounded-full border-2 border-teal-400 bg-slate-950 shadow-md shadow-teal-400/40 z-10">
-                  <span className="h-2 w-2 rounded-full bg-teal-400 animate-pulse" />
+                <div className="absolute left-4 md:left-1/2 -translate-x-1/2 flex h-5 w-5 items-center justify-center rounded-full border-2 border-brand-primary bg-slate-950 shadow-md shadow-brand-primary/40 z-10">
+                  <span className="h-2 w-2 rounded-full bg-brand-primary animate-pulse" />
                 </div>
 
                 {/* Conteúdo do cartão: posicionado na esquerda ou direita em desktop */}
@@ -70,7 +70,7 @@ export function TimelineSection() {
                     isLeft ? "md:pr-8 md:text-right" : "md:pl-8 md:ml-auto md:text-left"
                   }`}
                 >
-                  <div className="group rounded-xl border border-slate-800/90 bg-[#0d1527]/90 p-4 transition-all duration-300 hover:border-teal-500/40 hover:bg-[#111c34] hover:shadow-lg hover:shadow-teal-500/10">
+                  <div className="group rounded-xl border border-surface-border bg-surface-item p-4 transition-all duration-300 hover:border-surface-border-hover hover:bg-surface-item-hover hover:shadow-lg hover:shadow-brand-primary/10">
                     <div className="flex flex-wrap items-center gap-2 justify-start md:justify-start">
                       <h3 className="text-sm font-bold text-white group-hover:text-teal-300 transition-colors">
                         {exp.title}

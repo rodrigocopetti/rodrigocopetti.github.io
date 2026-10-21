@@ -31,9 +31,9 @@ export function ContactSection() {
   return (
     <section
       id="contato"
-      className="rounded-2xl border border-slate-800/80 bg-gradient-to-b from-[#0f172a]/90 via-[#0b1120] to-[#090d16] p-6 lg:p-8 shadow-2xl"
+      className="rounded-2xl border border-surface-border bg-gradient-to-b from-surface-card-from via-surface-card-via to-surface-card-to p-6 lg:p-8 shadow-2xl"
     >
-      <div className="border-b border-slate-800/80 pb-4 mb-6">
+      <div className="border-b border-surface-border pb-4 mb-6">
         <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white">Seção de Contato</h2>
         <p className="text-xs text-slate-400 mt-0.5">
           Vamos conversar sobre novos projetos, oportunidades ou parcerias técnicas!
@@ -60,7 +60,7 @@ export function ContactSection() {
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
-              className="border-slate-800 bg-[#0d1527] text-white placeholder:text-slate-500 focus-visible:border-teal-500"
+              className="border-surface-border bg-surface-item text-white placeholder:text-slate-500 focus-visible:border-brand-primary"
             />
           </div>
 
@@ -78,7 +78,7 @@ export function ContactSection() {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
-              className="border-slate-800 bg-[#0d1527] text-white placeholder:text-slate-500 focus-visible:border-teal-500"
+              className="border-surface-border bg-surface-item text-white placeholder:text-slate-500 focus-visible:border-brand-primary"
             />
           </div>
 
@@ -96,14 +96,14 @@ export function ContactSection() {
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               required
               rows={4}
-              className="border-slate-800 bg-[#0d1527] text-white placeholder:text-slate-500 focus-visible:border-teal-500"
+              className="border-surface-border bg-surface-item text-white placeholder:text-slate-500 focus-visible:border-brand-primary"
             />
           </div>
 
           <Button
             type="submit"
             disabled={loading}
-            className="w-full sm:w-auto rounded-full bg-teal-400 px-6 py-2.5 text-xs font-bold text-slate-950 transition-all hover:bg-teal-300 hover:shadow-lg hover:shadow-teal-500/20 active:scale-95 cursor-pointer disabled:opacity-50"
+            className="w-full sm:w-auto rounded-full bg-brand-primary px-6 py-2.5 text-xs font-bold text-slate-950 transition-all hover:bg-brand-primary-hover hover:shadow-lg hover:shadow-brand-primary/20 active:scale-95 cursor-pointer disabled:opacity-50"
           >
             {loading ? (
               "Enviando..."
@@ -126,14 +126,14 @@ export function ContactSection() {
         </form>
 
         {/* Links Sociais à direita */}
-        <div className="flex flex-col gap-3 rounded-xl border border-slate-800/90 bg-[#0d1527]/90 p-5">
+        <div className="flex flex-col gap-3 rounded-xl border border-surface-border bg-surface-item p-5">
           <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Conecte-se</span>
 
           <a
             href="https://linkedin.com/in/copetti"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 rounded-lg border border-slate-800/80 bg-slate-900/60 p-3 text-slate-200 transition-all hover:border-teal-500/50 hover:bg-slate-800/80 hover:text-white"
+            className="group flex items-center gap-3 rounded-lg border border-surface-border bg-slate-900/60 p-3 text-slate-200 transition-all hover:border-surface-border-hover hover:bg-surface-item-hover hover:text-white"
           >
             <div className="flex h-8 w-8 items-center justify-center rounded-md bg-blue-600/20 text-blue-400 group-hover:scale-110 transition-transform">
               <LinkedinIcon className="h-4 w-4" />
@@ -148,9 +148,9 @@ export function ContactSection() {
             href="https://github.com/rodrigocopetti"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 rounded-lg border border-slate-800/80 bg-slate-900/60 p-3 text-slate-200 transition-all hover:border-teal-500/50 hover:bg-slate-800/80 hover:text-white"
+            className="group flex items-center gap-3 rounded-lg border border-surface-border bg-slate-900/60 p-3 text-slate-200 transition-all hover:border-surface-border-hover hover:bg-surface-item-hover hover:text-white"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-slate-800 text-teal-400 group-hover:scale-110 transition-transform">
+            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-slate-800 text-brand-primary group-hover:scale-110 transition-transform">
               <GithubIcon className="h-4 w-4" />
             </div>
             <div>
@@ -161,9 +161,9 @@ export function ContactSection() {
 
           <a
             href="mailto:rodrigocopetti.dev@gmail.com"
-            className="group flex items-center gap-3 rounded-lg border border-slate-800/80 bg-slate-900/60 p-3 text-slate-200 transition-all hover:border-teal-500/50 hover:bg-slate-800/80 hover:text-white"
+            className="group flex items-center gap-3 rounded-lg border border-surface-border bg-slate-900/60 p-3 text-slate-200 transition-all hover:border-surface-border-hover hover:bg-surface-item-hover hover:text-white"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-teal-500/20 text-teal-400 group-hover:scale-110 transition-transform">
+            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-brand-primary/20 text-brand-primary group-hover:scale-110 transition-transform">
               <Mail className="h-4 w-4" />
             </div>
             <div>

@@ -37,7 +37,7 @@ export function LanguageDonutChart({ data, size = 68, strokeWidth = 9 }) {
             cy={size / 2}
             r={radius}
             fill="transparent"
-            stroke="#1e293b"
+            stroke="var(--color-chart-track)"
             strokeWidth={strokeWidth}
           />
           {segments.map((item, index) => (

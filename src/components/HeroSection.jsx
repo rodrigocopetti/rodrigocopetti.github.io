@@ -13,7 +13,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden rounded-2xl border border-slate-800/80 bg-gradient-to-b from-[#0f172a]/90 via-[#0b1120] to-[#090d16] p-6 lg:p-8 shadow-2xl"
+      className="relative overflow-hidden rounded-2xl border border-surface-border bg-gradient-to-b from-surface-card-from via-surface-card-via to-surface-card-to p-6 lg:p-8 shadow-2xl"
     >
       {/* Luz ambiente de fundo */}
       <div className="pointer-events-none absolute -top-24 -left-24 h-96 w-96 rounded-full bg-teal-500/10 blur-3xl" />
@@ -63,13 +63,13 @@ export function HeroSection() {
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
             <a
               href="#projetos"
-              className="inline-flex items-center justify-center rounded-full bg-teal-400 px-6 py-2.5 text-xs font-bold text-slate-950 transition-all hover:bg-teal-300 hover:shadow-lg hover:shadow-teal-500/20 active:scale-95"
+              className="inline-flex items-center justify-center rounded-full bg-brand-primary px-6 py-2.5 text-xs font-bold text-slate-950 transition-all hover:bg-brand-primary-hover hover:shadow-lg hover:shadow-brand-primary/20 active:scale-95"
             >
               Ver Projetos
             </a>
             <a
               href="#contato"
-              className="inline-flex items-center justify-center rounded-full border border-slate-700 bg-slate-900/60 px-6 py-2.5 text-xs font-semibold text-slate-200 transition-all hover:bg-slate-800 hover:text-white hover:border-slate-600 active:scale-95"
+              className="inline-flex items-center justify-center rounded-full border border-surface-border bg-slate-900/60 px-6 py-2.5 text-xs font-semibold text-slate-200 transition-all hover:bg-slate-800 hover:text-white hover:border-surface-border-hover active:scale-95"
             >
               Contato
             </a>
@@ -81,7 +81,7 @@ export function HeroSection() {
           <div className="relative">
             {/* Halo de luz ciano/esmeralda em volta do avatar */}
             <div className="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-teal-500 via-cyan-400 to-emerald-500 opacity-80 blur-sm animate-pulse" />
-            <div className="relative h-28 w-28 sm:h-32 sm:w-32 overflow-hidden rounded-full border-2 border-teal-400/80 bg-slate-900 shadow-xl">
+            <div className="relative h-28 w-28 sm:h-32 sm:w-32 overflow-hidden rounded-full border-2 border-brand-primary/80 bg-slate-900 shadow-xl">
               <img
                 src="/avatar.jpg"
                 alt="Desenvolvedor Full-Stack"
@@ -91,7 +91,7 @@ export function HeroSection() {
           </div>
 
           {/* Badge de status no GitHub com LED verde pulsante */}
-          <div className="mt-4 flex flex-col items-center gap-1.5 rounded-xl border border-slate-800/90 bg-slate-900/80 px-4 py-2 shadow-lg backdrop-blur-sm">
+          <div className="mt-4 flex flex-col items-center gap-1.5 rounded-xl border border-surface-border bg-slate-900/80 px-4 py-2 shadow-lg backdrop-blur-sm">
             <div className="flex items-center gap-2 text-xs font-medium text-slate-300">
               <span>Status atividade</span>
               <span className="relative flex h-2 w-2">
@@ -103,7 +103,7 @@ export function HeroSection() {
               href="https://github.com/rodrigocopetti"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-[11px] text-teal-400 hover:text-teal-300 transition-colors"
+              className="flex items-center gap-1.5 text-[11px] text-brand-primary hover:text-brand-primary-hover transition-colors"
             >
               <GithubIcon className="h-3.5 w-3.5" />
               <span>Status no GitHub</span>
@@ -115,7 +115,7 @@ export function HeroSection() {
       {/* Snippets de Código / Janelas IDE flutuantes no Hero */}
       <div className="relative z-10 mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Editor 1: Backend Spring Boot */}
-        <div className="overflow-hidden rounded-xl border border-slate-800 bg-[#080d19]/90 shadow-xl font-mono text-[11px] leading-relaxed">
+        <div className="overflow-hidden rounded-xl border border-surface-border bg-surface-editor shadow-xl font-mono text-[11px] leading-relaxed">
           <div className="flex items-center justify-between border-b border-slate-800/80 bg-slate-900/60 px-3 py-1.5 text-slate-400">
             <div className="flex items-center gap-1.5">
               <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
@@ -164,7 +164,7 @@ export function HeroSection() {
         </div>
 
         {/* Editor 2: Frontend React & TypeScript */}
-        <div className="overflow-hidden rounded-xl border border-slate-800 bg-[#080d19]/90 shadow-xl font-mono text-[11px] leading-relaxed">
+        <div className="overflow-hidden rounded-xl border border-surface-border bg-surface-editor shadow-xl font-mono text-[11px] leading-relaxed">
           <div className="flex items-center justify-between border-b border-slate-800/80 bg-slate-900/60 px-3 py-1.5 text-slate-400">
             <div className="flex items-center gap-1.5">
               <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
