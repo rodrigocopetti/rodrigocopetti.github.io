@@ -1,25 +1,41 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
+
+export interface LanguageItem {
+  name: string;
+  percent: number;
+  color: string;
+}
+
+export interface LanguageDonutChartProps {
+  data: LanguageItem[];
+  size?: number;
+  strokeWidth?: number;
+}
 
 // Componente de gráfico Donut SVG para demonstrar as linguagens usadas no repositório
-export function LanguageDonutChart({ data, size = 68, strokeWidth = 9 }) {
-  const radius = (size - strokeWidth) / 2
-  const circumference = 2 * Math.PI * radius
+export function LanguageDonutChart({
+  data,
+  size = 68,
+  strokeWidth = 9,
+}: LanguageDonutChartProps) {
+  const radius = (size - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius;
 
   // Pré-calcular offsets acumulados para cada fatia circular sem mutar variáveis
   const segments = useMemo(() => {
     return data.map((item, index) => {
       const prevSum = data
         .slice(0, index)
-        .reduce((sum, curr) => sum + curr.percent, 0)
-      const strokeDasharray = `${(item.percent / 100) * circumference} ${circumference}`
-      const strokeDashoffset = -((prevSum / 100) * circumference)
+        .reduce((sum, curr) => sum + curr.percent, 0);
+      const strokeDasharray = `${(item.percent / 100) * circumference} ${circumference}`;
+      const strokeDashoffset = -((prevSum / 100) * circumference);
       return {
         ...item,
         strokeDasharray,
         strokeDashoffset,
-      }
-    })
-  }, [data, circumference])
+      };
+    });
+  }, [data, circumference]);
 
   return (
     <div className="flex items-center gap-3">
@@ -66,7 +82,9 @@ export function LanguageDonutChart({ data, size = 68, strokeWidth = 9 }) {
               className="inline-block h-2 w-2 rounded-full shrink-0 shadow-xs"
               style={{ backgroundColor: item.color }}
             />
-            <span className="font-medium text-slate-800 dark:text-slate-300">{item.name}</span>
+            <span className="font-medium text-slate-800 dark:text-slate-300">
+              {item.name}
+            </span>
             <span className="text-slate-500 dark:text-slate-400 font-semibold ml-auto pl-1">
               {item.percent}%
             </span>
@@ -74,5 +92,5 @@ export function LanguageDonutChart({ data, size = 68, strokeWidth = 9 }) {
         ))}
       </div>
     </div>
-  )
+  );
 }

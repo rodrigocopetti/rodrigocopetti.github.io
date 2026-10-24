@@ -1,7 +1,14 @@
 // Componente de Linha do Tempo e Experiência Profissional
 
+interface ExperienceItem {
+  title: string;
+  period: string;
+  side: "left" | "right";
+  items: string[];
+}
+
 export function TimelineSection() {
-  const experiences = [
+  const experiences: ExperienceItem[] = [
     {
       title: "Desenvolvedor Full-Stack Master",
       period: "2022 - Presente",
@@ -27,18 +34,22 @@ export function TimelineSection() {
       title: "Desenvolvedor Sênior",
       period: "1997 - 2001",
       side: "left",
-      items: ["Desenvolvimento e manutenção de sistemas comerciais utilizando Java e Delphi"],
+      items: [
+        "Desenvolvimento e manutenção de sistemas comerciais utilizando Java e Delphi",
+      ],
     },
     {
       title: "Desenvolvedor Pleno",
       period: "1996 - 1997",
       side: "right",
-      items: ["Desenvolvimento e manutenção de sistemas comerciais utilizando Clipper"],
+      items: [
+        "Desenvolvimento e manutenção de sistemas comerciais utilizando Clipper",
+      ],
     },
   ];
 
   return (
-    <section className="space-y-6 rounded-2xl border border-surface-border bg-gradient-to-b from-surface-card-from via-surface-card-via to-surface-card-to p-6 lg:p-8 shadow-2xl">
+    <section className="space-y-6 rounded-2xl border border-surface-border bg-linear-to-b from-surface-card-from via-surface-card-via to-surface-card-to p-6 lg:p-8 shadow-2xl">
       {/* Cabeçalho com Título e Badge Professional */}
       <div className="flex flex-col items-center justify-center space-y-2 text-center">
         <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -52,7 +63,7 @@ export function TimelineSection() {
       {/* Linha do tempo visual com árvore de nós */}
       <div className="relative mt-6">
         {/* Linha vertical central */}
-        <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-0.5 -translate-x-1/2 bg-gradient-to-b from-teal-500 via-emerald-500 to-slate-400 dark:to-slate-800" />
+        <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-0.5 -translate-x-1/2 bg-linear-to-b from-teal-500 via-emerald-500 to-slate-400 dark:to-slate-800" />
 
         <div className="space-y-8">
           {experiences.map((exp, index) => {
@@ -70,7 +81,9 @@ export function TimelineSection() {
                 {/* Conteúdo do cartão: posicionado na esquerda ou direita em desktop */}
                 <div
                   className={`ml-10 md:ml-0 md:w-1/2 ${
-                    isLeft ? "md:pr-8 md:text-right" : "md:pl-8 md:ml-auto md:text-left"
+                    isLeft
+                      ? "md:pr-8 md:text-right"
+                      : "md:pl-8 md:ml-auto md:text-left"
                   }`}
                 >
                   <div className="group rounded-xl border border-surface-border bg-surface-item p-4 transition-all duration-300 hover:border-surface-border-hover hover:bg-surface-item-hover hover:shadow-lg hover:shadow-brand-primary/10">
@@ -85,11 +98,10 @@ export function TimelineSection() {
 
                     <ul className="mt-3 space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
                       {exp.items.map((bullet, bIdx) => (
-                        <li
-                          key={bIdx}
-                          className="flex items-start gap-2"
-                        >
-                          <span className="text-brand-primary shrink-0 mt-0.5 font-bold">•</span>
+                        <li key={bIdx} className="flex items-start gap-2">
+                          <span className="text-brand-primary shrink-0 mt-0.5 font-bold">
+                            •
+                          </span>
                           <span>{bullet}</span>
                         </li>
                       ))}

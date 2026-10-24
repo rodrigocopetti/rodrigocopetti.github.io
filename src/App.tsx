@@ -5,21 +5,27 @@ import { TechStackSection } from "@/components/TechStackSection";
 import { TimelineSection } from "@/components/TimelineSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ContactSection } from "@/components/ContactSection";
+import { type ThemeMode } from "@/components/ThemeToggle";
 import { LayoutGrid, Rows } from "lucide-react";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("home");
   // Modo de exibição: 'showcase' (3 colunas) ou 'linear' (página corrida)
-  const [viewMode, setViewMode] = useState("linear");
+  const [viewMode, setViewMode] = useState<"showcase" | "linear">("linear");
 
   // Estado do tema com inicialização a partir do localStorage ou preferência do sistema
   // Temas disponíveis: 'dark' | 'light' | 'modern' | 'modern-dark'
-  const [theme, setTheme] = useState(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme && ["dark", "light", "modern", "modern-dark"].includes(savedTheme)) {
+  const [theme, setTheme] = useState<ThemeMode>(() => {
+    const savedTheme = localStorage.getItem("theme") as ThemeMode | null;
+    if (
+      savedTheme &&
+      ["dark", "light", "modern", "modern-dark"].includes(savedTheme)
+    ) {
       return savedTheme;
     }
-    return document.documentElement.classList.contains("dark") ? "dark" : "light";
+    return document.documentElement.classList.contains("dark")
+      ? "dark"
+      : "light";
   });
 
   // Sincroniza as classes correspondentes no elemento raiz html e persiste no localStorage
@@ -40,12 +46,12 @@ export default function App() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const changeTheme = (newTheme) => {
+  const changeTheme = (newTheme: ThemeMode) => {
     setTheme(newTheme);
   };
 
   const toggleTheme = () => {
-    const themeCycle = ["dark", "light", "modern", "modern-dark"];
+    const themeCycle: ThemeMode[] = ["dark", "light", "modern", "modern-dark"];
     const currentIndex = themeCycle.indexOf(theme);
     const nextIndex = (currentIndex + 1) % themeCycle.length;
     setTheme(themeCycle[nextIndex]);
@@ -60,7 +66,7 @@ export default function App() {
             <h1 className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-3">
               <span>PORTFOLIO</span>
               <span className="h-2.5 w-2.5 rounded-full bg-brand-primary shadow-[0_0_12px_var(--color-brand-glow)] inline-block animate-pulse" />
-              <span className="bg-gradient-to-r from-teal-500 via-cyan-600 to-emerald-600 dark:from-teal-300 dark:via-cyan-300 dark:to-emerald-400 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-teal-500 via-cyan-600 to-emerald-600 dark:from-teal-300 dark:via-cyan-300 dark:to-emerald-400 bg-clip-text text-transparent">
                 FULL STACK DEVELOPER
               </span>
             </h1>
@@ -77,7 +83,6 @@ export default function App() {
               }`}
             >
               <LayoutGrid className="h-3.5 w-3.5" />
-              {/* <span>Painel Showcase</span> */}
             </button>
             <button
               onClick={() => setViewMode("linear")}
@@ -88,7 +93,6 @@ export default function App() {
               }`}
             >
               <Rows className="h-3.5 w-3.5" />
-              {/* <span>Fluxo Contínuo</span> */}
             </button>
           </div>
         </div>
@@ -146,11 +150,20 @@ export default function App() {
       {/* Rodapé Moderno */}
       <footer className="w-full border-t border-surface-border bg-page-footer py-6 px-4 text-center text-xs text-slate-600 dark:text-slate-400">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} Rodrigo Copetti • Desenvolvedor Full-Stack</p>
+          <p>
+            © {new Date().getFullYear()} Rodrigo Copetti • Desenvolvedor
+            Full-Stack
+          </p>
           <p className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
-            Desenvolvido com <span className="text-brand-primary font-semibold">React</span>,{" "}
-            <span className="text-brand-secondary font-semibold">Tailwind CSS</span> e{" "}
-            <span className="text-slate-800 dark:text-slate-200 font-semibold">shadcn/ui</span>
+            Desenvolvido com{" "}
+            <span className="text-brand-primary font-semibold">React</span>,{" "}
+            <span className="text-brand-secondary font-semibold">
+              Tailwind CSS
+            </span>{" "}
+            e{" "}
+            <span className="text-slate-800 dark:text-slate-200 font-semibold">
+              shadcn/ui
+            </span>
           </p>
         </div>
       </footer>

@@ -1,12 +1,17 @@
-import { useState } from "react";
-import { Send, CheckCircle2, Mail } from "lucide-react";
+import React, { useState, useTransition } from "react";
+import { Send, CheckCircle2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { GithubIcon, LinkedinIcon } from "@/components/TechIcons";
+import { Mail } from "lucide-react";
 
-export function ContactSection({ layoutMode = "auto" }) {
+export interface ContactSectionProps {
+  layoutMode?: "auto" | "showcase-column";
+}
+
+export function ContactSection({ layoutMode = "auto" }: ContactSectionProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,16 +19,19 @@ export function ContactSection({ layoutMode = "auto" }) {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [, startTransition] = useTransition();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
     setLoading(true);
     setTimeout(() => {
-      setLoading(false);
-      setIsSubmitted(true);
-      setFormData({ name: "", email: "", message: "" });
+      startTransition(() => {
+        setLoading(false);
+        setIsSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+      });
       setTimeout(() => setIsSubmitted(false), 5000);
     }, 600);
   };
@@ -34,22 +42,31 @@ export function ContactSection({ layoutMode = "auto" }) {
   return (
     <section
       id="contato"
-      className="rounded-2xl border border-surface-border bg-gradient-to-b from-surface-card-from via-surface-card-via to-surface-card-to p-6 lg:p-8 shadow-2xl"
+      className="rounded-2xl border border-surface-border bg-linear-to-b from-surface-card-from via-surface-card-via to-surface-card-to p-6 lg:p-8 shadow-2xl"
     >
       <div className="border-b border-surface-border pb-4 mb-6">
         <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
           Seção de Contato
         </h2>
         <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
-          Vamos conversar sobre novos projetos, oportunidades ou parcerias técnicas!
+          Vamos conversar sobre novos projetos, oportunidades ou parcerias
+          técnicas!
         </p>
       </div>
 
-      <div className={isShowcaseColumn ? "flex flex-col gap-6" : "grid grid-cols-1 lg:grid-cols-3 gap-8 items-start"}>
+      <div
+        className={
+          isShowcaseColumn
+            ? "flex flex-col gap-6"
+            : "grid grid-cols-1 lg:grid-cols-3 gap-8 items-start"
+        }
+      >
         {/* Formulário de Contato */}
         <form
           onSubmit={handleSubmit}
-          className={isShowcaseColumn ? "w-full space-y-4" : "lg:col-span-2 space-y-4"}
+          className={
+            isShowcaseColumn ? "w-full space-y-4" : "lg:col-span-2 space-y-4"
+          }
         >
           <div className="space-y-1.5">
             <Label
@@ -63,7 +80,9 @@ export function ContactSection({ layoutMode = "auto" }) {
               type="text"
               placeholder="Seu nome"
               value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
               required
               className="border-surface-border bg-surface-item text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus-visible:border-brand-primary"
             />
@@ -81,7 +100,9 @@ export function ContactSection({ layoutMode = "auto" }) {
               type="email"
               placeholder="seu.email@exemplo.com"
               value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
               required
               className="border-surface-border bg-surface-item text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus-visible:border-brand-primary"
             />
@@ -98,7 +119,9 @@ export function ContactSection({ layoutMode = "auto" }) {
               id="contact-message"
               placeholder="Escreva sua mensagem aqui..."
               value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
               required
               rows={4}
               className="border-surface-border bg-surface-item text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus-visible:border-brand-primary"
@@ -151,8 +174,12 @@ export function ContactSection({ layoutMode = "auto" }) {
                 <LinkedinIcon className="h-4 w-4" />
               </div>
               <div>
-                <div className="text-xs font-bold text-slate-900 dark:text-white">LinkedIn</div>
-                <div className="text-[11px] text-slate-500 dark:text-slate-400">/in/copetti</div>
+                <div className="text-xs font-bold text-slate-900 dark:text-white">
+                  LinkedIn
+                </div>
+                <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                  /in/copetti
+                </div>
               </div>
             </a>
 
@@ -166,8 +193,12 @@ export function ContactSection({ layoutMode = "auto" }) {
                 <GithubIcon className="h-4 w-4" />
               </div>
               <div>
-                <div className="text-xs font-bold text-slate-900 dark:text-white">GitHub</div>
-                <div className="text-[11px] text-slate-500 dark:text-slate-400">@rodrigocopetti</div>
+                <div className="text-xs font-bold text-slate-900 dark:text-white">
+                  GitHub
+                </div>
+                <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                  @rodrigocopetti
+                </div>
               </div>
             </a>
 
@@ -179,8 +210,12 @@ export function ContactSection({ layoutMode = "auto" }) {
                 <Mail className="h-4 w-4" />
               </div>
               <div>
-                <div className="text-xs font-bold text-slate-900 dark:text-white">E-mail</div>
-                <div className="text-[11px] text-slate-500 dark:text-slate-400">rodrigocopetti.dev@gmail.com</div>
+                <div className="text-xs font-bold text-slate-900 dark:text-white">
+                  E-mail
+                </div>
+                <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                  rodrigocopetti.dev@gmail.com
+                </div>
               </div>
             </a>
           </div>

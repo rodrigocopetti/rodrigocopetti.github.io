@@ -1,8 +1,8 @@
-import { useState } from "react"
-import { Menu, X, LogIn } from "lucide-react"
-import { GithubIcon } from "@/components/TechIcons"
-import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/ThemeToggle"
+import { useState } from "react";
+import { Menu, X, LogIn } from "lucide-react";
+import { GithubIcon } from "@/components/TechIcons";
+import { Button } from "@/components/ui/button";
+import { ThemeToggle, type ThemeMode } from "@/components/ThemeToggle";
 import {
   Dialog,
   DialogContent,
@@ -10,30 +10,44 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
-export function Navbar({ onNavigate, activeSection, theme, onToggleTheme, onSelectTheme }) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [loginModalOpen, setLoginModalOpen] = useState(false)
+export interface NavbarProps {
+  onNavigate?: (section: string) => void;
+  activeSection?: string;
+  theme: string;
+  onToggleTheme?: () => void;
+  onSelectTheme?: (theme: ThemeMode) => void;
+}
+
+export function Navbar({
+  onNavigate,
+  activeSection,
+  theme,
+  onToggleTheme,
+  onSelectTheme,
+}: NavbarProps) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
 
   const navLinks = [
     { label: "Home", href: "#home" },
     { label: "Projetos", href: "#projetos" },
     { label: "Contato", href: "#contato" },
-  ]
+  ];
 
-  const handleScroll = (href) => {
-    setMobileMenuOpen(false)
+  const handleScroll = (href: string) => {
+    setMobileMenuOpen(false);
     if (onNavigate) {
-      onNavigate(href.replace("#", ""))
+      onNavigate(href.replace("#", ""));
     }
-    const elem = document.querySelector(href)
+    const elem = document.querySelector(href);
     if (elem) {
-      elem.scrollIntoView({ behavior: "smooth" })
+      elem.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-surface-border bg-page-header/80 backdrop-blur-md">
@@ -70,7 +84,11 @@ export function Navbar({ onNavigate, activeSection, theme, onToggleTheme, onSele
 
         {/* Ações à direita: Log in, Tema e Contato */}
         <div className="hidden sm:flex items-center gap-3">
-          <ThemeToggle theme={theme} onToggle={onToggleTheme} onSelectTheme={onSelectTheme} />
+          <ThemeToggle
+            theme={theme}
+            onToggle={onToggleTheme}
+            onSelectTheme={onSelectTheme}
+          />
 
           <Dialog open={loginModalOpen} onOpenChange={setLoginModalOpen}>
             <DialogTrigger className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-colors cursor-pointer flex items-center gap-1.5">
@@ -88,13 +106,16 @@ export function Navbar({ onNavigate, activeSection, theme, onToggleTheme, onSele
               </DialogHeader>
               <form
                 onSubmit={(e) => {
-                  e.preventDefault()
-                  setLoginModalOpen(false)
+                  e.preventDefault();
+                  setLoginModalOpen(false);
                 }}
                 className="space-y-4 pt-2"
               >
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-xs text-slate-700 dark:text-slate-300">
+                  <Label
+                    htmlFor="email"
+                    className="text-xs text-slate-700 dark:text-slate-300"
+                  >
                     E-mail
                   </Label>
                   <Input
@@ -105,7 +126,10 @@ export function Navbar({ onNavigate, activeSection, theme, onToggleTheme, onSele
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="password" className="text-xs text-slate-700 dark:text-slate-300">
+                  <Label
+                    htmlFor="password"
+                    className="text-xs text-slate-700 dark:text-slate-300"
+                  >
                     Senha
                   </Label>
                   <Input
@@ -135,7 +159,11 @@ export function Navbar({ onNavigate, activeSection, theme, onToggleTheme, onSele
 
         {/* Botão de menu mobile */}
         <div className="flex sm:hidden items-center gap-2">
-          <ThemeToggle theme={theme} onToggle={onToggleTheme} onSelectTheme={onSelectTheme} />
+          <ThemeToggle
+            theme={theme}
+            onToggle={onToggleTheme}
+            onSelectTheme={onSelectTheme}
+          />
           <Button
             variant="ghost"
             size="icon"
@@ -143,7 +171,11 @@ export function Navbar({ onNavigate, activeSection, theme, onToggleTheme, onSele
             className="text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800/60"
             aria-label="Abrir menu"
           >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {mobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </Button>
         </div>
       </div>
@@ -163,8 +195,8 @@ export function Navbar({ onNavigate, activeSection, theme, onToggleTheme, onSele
           <div className="pt-2 border-t border-surface-border flex items-center justify-between">
             <button
               onClick={() => {
-                setMobileMenuOpen(false)
-                setLoginModalOpen(true)
+                setMobileMenuOpen(false);
+                setLoginModalOpen(true);
               }}
               className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white"
             >
@@ -180,5 +212,5 @@ export function Navbar({ onNavigate, activeSection, theme, onToggleTheme, onSele
         </div>
       )}
     </header>
-  )
+  );
 }

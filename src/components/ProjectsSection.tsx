@@ -1,10 +1,32 @@
-import { ExternalLink, Star, GitFork, Eye } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
-import { LanguageDonutChart } from "@/components/LanguageDonutChart"
-import { GithubIcon } from "@/components/TechIcons"
+import { ExternalLink, Star, GitFork, Eye } from "lucide-react";
+import { Badge, type BadgeProps } from "@/components/ui/badge";
+import {
+  LanguageDonutChart,
+  type LanguageItem,
+} from "@/components/LanguageDonutChart";
+import { GithubIcon } from "@/components/TechIcons";
+
+interface ProjectTag {
+  name: string;
+  variant: BadgeProps["variant"];
+}
+
+interface ProjectItem {
+  title: string;
+  description: string;
+  githubUrl: string;
+  demoUrl: string;
+  tags: ProjectTag[];
+  stats: {
+    stars: number;
+    forks: number;
+    watchers: number;
+  };
+  languages: LanguageItem[];
+}
 
 export function ProjectsSection() {
-  const projects = [
+  const projects: ProjectItem[] = [
     {
       title: "E-commerce API (Spring Boot)",
       description:
@@ -60,10 +82,13 @@ export function ProjectsSection() {
         { name: "Docker", percent: 10, color: "var(--color-lang-docker)" },
       ],
     },
-  ]
+  ];
 
   return (
-    <section id="projetos" className="space-y-5 rounded-2xl border border-surface-border bg-gradient-to-b from-surface-card-from via-surface-card-via to-surface-card-to p-6 lg:p-8 shadow-2xl">
+    <section
+      id="projetos"
+      className="space-y-5 rounded-2xl border border-surface-border bg-linear-to-b from-surface-card-from via-surface-card-via to-surface-card-to p-6 lg:p-8 shadow-2xl"
+    >
       {/* Cabeçalho */}
       <div className="flex items-center justify-between border-b border-surface-border pb-4">
         <div>
@@ -72,7 +97,8 @@ export function ProjectsSection() {
             Repositórios e Projetos GitHub
           </h2>
           <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
-            Projetos reais com código limpo, arquitetura em microsserviços e full-stack
+            Projetos reais com código limpo, arquitetura em microsserviços e
+            full-stack
           </p>
         </div>
       </div>
@@ -101,7 +127,11 @@ export function ProjectsSection() {
                 {/* Tags de tecnologias */}
                 <div className="flex flex-wrap gap-1.5 pt-1">
                   {proj.tags.map((tag, tIdx) => (
-                    <Badge key={tIdx} variant={tag.variant} className="text-[11px] font-medium">
+                    <Badge
+                      key={tIdx}
+                      variant={tag.variant}
+                      className="text-[11px] font-medium"
+                    >
                       {tag.name}
                     </Badge>
                   ))}
@@ -152,12 +182,16 @@ export function ProjectsSection() {
                 <span className="text-[11px] font-semibold tracking-wider text-slate-600 dark:text-slate-400 uppercase mb-2">
                   Linguagens Usadas
                 </span>
-                <LanguageDonutChart data={proj.languages} size={64} strokeWidth={8} />
+                <LanguageDonutChart
+                  data={proj.languages}
+                  size={64}
+                  strokeWidth={8}
+                />
               </div>
             </div>
           </div>
         ))}
       </div>
     </section>
-  )
+  );
 }
