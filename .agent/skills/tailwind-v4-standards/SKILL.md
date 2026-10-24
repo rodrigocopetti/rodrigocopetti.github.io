@@ -45,8 +45,36 @@ No Tailwind CSS v4, a sintaxe legada `bg-gradient-to-*` foi descontinuada em fav
 </section>
 ```
 
-## 2. Verificação de Integridade
+## 2. Conflito de Display (`flex` vs `block` / `inline`)
+
+Evite declarar mais de uma classe que defina a mesma propriedade de exibição (`display`) no mesmo elemento, pois geram avisos de redundância e conflito de CSS:
+- ❌ **Evite:** `className="... flex ... block ..."`
+- ✅ **Use apenas a desejada:** `className="... flex ..."` (ou apenas `block`)
+
+## 3. Modificadores Pseudo e Seletores Arbitrários (`has`)
+
+No Tailwind CSS v4, modificadores de pseudo-classes como `:has()` possuem sintaxe direta com variantes nativas:
+- ❌ **Evite:** `[&:has([role=checkbox])]:pr-0`
+- ✅ **Use:** `has-[[role=checkbox]]:pr-0`
+
+## 4. Dimensões Numéricas / Escalares
+
+O Tailwind v4 aceita valores numéricos nativos e decimais na escala de espaçamento (cada `1` equivale a `0.25rem` / `4px`), dispensando colchetes arbitrários em muitos casos:
+- ❌ **Evite:** `max-w-[400px]` ➔ ✅ **Use:** `max-w-100` (`100 * 4px = 400px`)
+- ❌ **Evite:** `max-w-[85px]` ➔ ✅ **Use:** `max-w-21.25` (`21.25 * 4px = 85px`)
+
+## 5. Diretivas e At-Rules do Tailwind v4 (`@theme`, `@custom-variant`, `@apply`)
+
+No Tailwind CSS v4, as seguintes diretivas são nativas e oficiais:
+- `@theme` / `@theme inline`: para declaração de tokens de tema e fontes.
+- `@custom-variant`: para declaração de variantes customizadas (ex: modo dark `(& :is(.dark *))`).
+- `@apply`: para aplicação de classes utilitárias em seletores CSS.
+
+> **Aviso de Linter da IDE:** Como essas diretivas `@...` são extensões da sintaxe CSS introduzidas pelo Tailwind v4, o validador nativo de CSS do VS Code/IDE pode sinalizar `Unknown at rule`. Para evitar esses falsos positivos sem comprometer o CSS, o arquivo [.vscode/settings.json](file:///Users/cops/dev/rc/rodrigocopetti.github.io/.vscode/settings.json) define `"css.lint.unknownAtRules": "ignore"`.
+
+## 6. Verificação de Integridade
 
 Sempre que adicionar ou alterar classes utilitárias de estilo:
 1. Verifique se nenhuma classe legada do tipo `bg-gradient-to-*` foi introduzida.
-2. Execute `pnpm run build` para garantir que os utilitários foram compilados corretamente pelo `@tailwindcss/vite`.
+2. Certifique-se de que não há propriedades conflitantes de display (ex.: `flex` e `block`).
+3. Execute `pnpm run build` para garantir que os utilitários foram compilados corretamente pelo `@tailwindcss/vite`.

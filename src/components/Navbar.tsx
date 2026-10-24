@@ -94,7 +94,7 @@ export function Navbar({
             <DialogTrigger className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-colors cursor-pointer flex items-center gap-1.5">
               Log in
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[400px] border-surface-border bg-surface-card text-foreground">
+            <DialogContent className="sm:max-w-100 border-surface-border bg-surface-card text-foreground">
               <DialogHeader>
                 <DialogTitle className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
                   <LogIn className="h-5 w-5 text-brand-primary" />

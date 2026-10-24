@@ -108,7 +108,7 @@ export function ThemeToggle({
           className="h-3.5 w-3.5"
           style={{ color: currentTheme.color }}
         />
-        <span className="hidden md:inline-block max-w-[85px] truncate">
+        <span className="hidden md:inline-block max-w-21.25 truncate">
           {currentTheme.name}
         </span>
         <ChevronDown

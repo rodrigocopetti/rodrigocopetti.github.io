@@ -150,7 +150,7 @@ export function TechStackSection() {
         target="_blank"
         rel="noopener noreferrer"
         title={`Acessar site oficial do ${skill.name}`}
-        className="group relative flex flex-col items-center justify-between rounded-xl border border-surface-border bg-surface-item p-3 text-center transition-all duration-300 hover:border-surface-border-hover hover:bg-surface-item-hover hover:shadow-lg hover:shadow-brand-primary/10 hover:-translate-y-0.5 cursor-pointer block no-underline"
+        className="group relative flex flex-col items-center justify-between rounded-xl border border-surface-border bg-surface-item p-3 text-center transition-all duration-300 hover:border-surface-border-hover hover:bg-surface-item-hover hover:shadow-lg hover:shadow-brand-primary/10 hover:-translate-y-0.5 cursor-pointer no-underline"
       >
         <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-900/80 p-2 border border-slate-300 dark:border-slate-800 transition-transform group-hover:scale-110">
           <Icon className="h-6 w-6" />
